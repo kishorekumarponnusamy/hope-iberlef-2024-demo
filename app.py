@@ -19,20 +19,43 @@ classifier = load_model()
 
 st.title("HOPE IberLEF 2024 Demo")
 
+# --- Show model label mapping (important debugging) ---
+st.subheader("Model Label Info")
+st.write(classifier.model.config.id2label)
+
 text = st.text_area("Enter Spanish text")
 
+# Try BOTH mappings (you will verify which is correct)
 label_map = {
     "LABEL_0": "Non-Hope Speech",
     "LABEL_1": "Hope Speech"
 }
 
+# Alternative (uncomment if reversed)
+# label_map = {
+#     "LABEL_0": "Hope Speech",
+#     "LABEL_1": "Non-Hope Speech"
+# }
+
 if st.button("Predict"):
     if text.strip():
-        result = classifier(text)[0]
-        label = result["label"]
-        score = result["score"]
+        
+        # Get probabilities for all classes
+        results = classifier(text, return_all_scores=True)[0]
 
-        st.write("Prediction:", label_map.get(label, label))
-        st.write("Confidence:", round(score, 4))
+        st.subheader("Class Probabilities")
+
+        for r in results:
+            st.write(
+                label_map.get(r["label"], r["label"]),
+                ":", round(r["score"], 4)
+            )
+
+        # Select best prediction
+        best = max(results, key=lambda x: x["score"])
+
+        st.subheader("Final Prediction")
+        st.write("Prediction:", label_map.get(best["label"], best["label"]))
+        st.write("Confidence:", round(best["score"], 4))
     else:
         st.warning("Enter text")
