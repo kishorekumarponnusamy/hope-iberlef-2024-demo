@@ -67,7 +67,7 @@ bert-base-spanish-wwm-cased
 ```
 ## 🌐 Live Demo
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_STREAMLIT_APP_LINK_HERE)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hope-iberlef-2024-demo-o64uq9takqyyzwa4rxhz3e.streamlit.app/)
 
 > Tip: Click the badge to open the app in a new tab.
 
