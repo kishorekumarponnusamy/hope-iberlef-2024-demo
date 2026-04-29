@@ -1,6 +1,7 @@
 # HOPE IberLEF 2024 Demo 🇪🇸
-![Workflow](image/workflow.png)
-
+<p align="center">
+  <img src="./image/workflow.png" alt="Workflow" width="800">
+</p>
 A deep learning model for Spanish Hope Speech Detection using a fine-tuned BERT-based transformer model, deployed through an interactive Streamlit web application.
 
 ---
